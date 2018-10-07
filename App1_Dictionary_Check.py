@@ -11,7 +11,7 @@ with open('data.json') as ds:
 
 # Correct wrong input words:
 def correct(word, data):
-    if word not in data.keys():
+    if word not in data.keys() and word.title() not in data.keys():
         lst=get_close_matches(word,data.keys())
         for i in lst:
             s='Do you mean '+i+'? [y/n]'
@@ -36,7 +36,7 @@ def word_search(data):
     word=correct(word,data)
     print('Searching ', word, '........')
     time.sleep(2)
-    if word in data.keys():
+    if word in data.keys() or word in data.keys():
         print(word, ' found!')
         print('Explanation in Disctionary:')
         for a in  data[word]:
